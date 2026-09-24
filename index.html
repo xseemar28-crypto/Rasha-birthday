@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -29,9 +34,10 @@
             overflow-x: hidden;
         }
 
-        /* =========================
+
+        /* =====================================================
            LOCK SCREEN
-        ========================= */
+        ===================================================== */
 
         #lock-screen {
             display: flex;
@@ -44,9 +50,68 @@
             position: relative;
         }
 
+
+        /* =====================================================
+           الصور الإضافية حول شاشة الرقم السري
+           
+           الصورة العلوية:
+           ضعي رابط صورتك أو كود الصورة مكان:
+           YOUR TOP IMAGE HERE
+        ===================================================== */
+
+        .top-decoration {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            width: 150px;
+            max-width: 25vw;
+
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /*
+        مثال:
+
+        <img
+            src="YOUR IMAGE HERE"
+            class="top-decoration"
+            alt=""
+        >
+
+        */
+
+
+        /* =====================================================
+           الصورة السفلية
+           
+           ضعي رابط صورتك مكان:
+           YOUR BOTTOM IMAGE HERE
+        ===================================================== */
+
+        .bottom-decoration {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+
+            width: 150px;
+            max-width: 25vw;
+
+            z-index: 1;
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
         .title-area {
             margin-bottom: 25px;
             transition: opacity 0.3s;
+            position: relative;
+            z-index: 2;
         }
 
         .main-title {
@@ -65,9 +130,10 @@
             font-style: italic;
         }
 
-        /* =========================
+
+        /* =====================================================
            PASSCODE DOTS
-        ========================= */
+        ===================================================== */
 
         .dots-container {
             display: flex;
@@ -75,6 +141,9 @@
             margin-bottom: 35px;
             height: 35px;
             align-items: center;
+
+            position: relative;
+            z-index: 2;
         }
 
         .dot {
@@ -82,7 +151,9 @@
             height: 35px;
             background-color: #f7d2e3;
             border-radius: 8px;
-            transition: background-color 0.2s, transform 0.2s;
+            transition:
+                background-color 0.2s,
+                transform 0.2s;
         }
 
         .dot.active {
@@ -90,39 +161,70 @@
             transform: scale(1.1);
         }
 
-        /* =========================
+
+        /* =====================================================
            POPUP
-        ========================= */
+        ===================================================== */
 
         .popup-card {
             position: absolute;
             top: 20px;
+
             width: calc(100% - 40px);
+
             background-color: #ffd8eb;
             border-radius: 20px;
+
             padding: 25px 20px;
-            box-shadow: 0 10px 25px rgba(229, 124, 168, 0.2);
+
+            box-shadow:
+                0 10px 25px
+                rgba(229, 124, 168, 0.2);
+
             display: none;
             flex-direction: column;
             align-items: center;
+
             z-index: 10;
-            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+            animation:
+                slideUp 0.4s
+                cubic-bezier(
+                    0.175,
+                    0.885,
+                    0.32,
+                    1.275
+                )
+                forwards;
         }
 
         .popup-card::after {
             content: "";
+
             position: absolute;
             bottom: -10px;
             left: 0;
+
             width: 100%;
             height: 10px;
+
             background-image:
-                linear-gradient(135deg, #ffd8eb 25%, transparent 25%),
-                linear-gradient(225deg, #ffd8eb 25%, transparent 25%);
+                linear-gradient(
+                    135deg,
+                    #ffd8eb 25%,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    225deg,
+                    #ffd8eb 25%,
+                    transparent 25%
+                );
+
             background-size: 15px 30px;
         }
 
         @keyframes slideUp {
+
             from {
                 transform: translateY(50px);
                 opacity: 0;
@@ -132,6 +234,7 @@
                 transform: translateY(0);
                 opacity: 1;
             }
+
         }
 
         .popup-title {
@@ -146,24 +249,41 @@
         .micko-img {
             width: 110px;
             height: 110px;
+
             border-radius: 50%;
+
             background-color: #fff;
+
             padding: 5px;
+
             border: 2px solid #e57ca8;
+
             object-fit: contain;
+
             margin-bottom: 20px;
         }
 
         .popup-btn {
             background-color: #e57ca8;
+
             color: white;
+
             border: none;
+
             padding: 10px 25px;
+
             border-radius: 20px;
+
             font-family: 'Poppins', sans-serif;
+
             font-size: 0.9rem;
+
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(229, 124, 168, 0.3);
+
+            box-shadow:
+                0 4px 10px
+                rgba(229, 124, 168, 0.3);
+
             transition: 0.2s;
         }
 
@@ -171,33 +291,59 @@
             transform: scale(0.95);
         }
 
-        /* =========================
+
+        /* =====================================================
            KEYPAD
-        ========================= */
+        ===================================================== */
 
         .keypad {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 20px 25px;
+
             width: 100%;
+
             max-width: 280px;
+
+            position: relative;
+            z-index: 2;
         }
 
         .key {
             width: 70px;
             height: 70px;
+
             border: 1px solid #f2cadb;
+
             background-color: #fff;
+
             border-radius: 50%;
+
             font-family: 'Playfair Display', serif;
+
             font-size: 1.9rem;
+
             color: #444;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(242, 202, 219, 0.4);
-            transition: background-color 0.1s, transform 0.1s;
+
+            box-shadow:
+                0 4px 10px
+                rgba(242, 202, 219, 0.4);
+
+            transition:
+                background-color 0.1s,
+                transform 0.1s;
+
             user-select: none;
         }
 
@@ -211,20 +357,28 @@
             color: #888;
         }
 
-        /* =========================
+
+        /* =====================================================
            BIRTHDAY PAGE
-        ========================= */
+        ===================================================== */
 
         #birthday-content {
             display: none;
+
             width: 100%;
+
             max-width: 800px;
+
             padding: 30px 20px;
+
             text-align: center;
-            animation: fadeIn 1s ease forwards;
+
+            animation:
+                fadeIn 1s ease forwards;
         }
 
         @keyframes fadeIn {
+
             from {
                 opacity: 0;
             }
@@ -232,62 +386,101 @@
             to {
                 opacity: 1;
             }
+
         }
 
-        /* =========================
+
+        /* =====================================================
            LETTER
-        ========================= */
+        ===================================================== */
 
         .letter-card {
-            background: linear-gradient(135deg, #fff0f6, #fff);
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff0f6,
+                    #fff
+                );
+
             padding: 40px 30px;
+
             border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(229, 124, 168, 0.1);
-            border: 1px dashed #e57ca8;
+
+            box-shadow:
+                0 15px 35px
+                rgba(229, 124, 168, 0.1);
+
+            border:
+                1px dashed #e57ca8;
+
             margin-bottom: 40px;
+
             direction: rtl;
         }
 
         .letter-card h1 {
             color: #cc1155;
+
             font-size: 2.2rem;
+
             margin-bottom: 15px;
         }
 
         .letter-card p {
             color: #555;
+
             font-size: 1.15rem;
+
             line-height: 1.8;
         }
 
-        /* =========================
+
+        /* =====================================================
            GALLERY
-        ========================= */
+        ===================================================== */
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 25px;
         }
 
         .gallery-grid img {
             width: 100%;
+
             height: 240px;
+
             object-fit: cover;
+
             border-radius: 20px;
+
             border: 6px solid #fff;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.08);
+
             transition: 0.3s ease;
         }
 
         .gallery-grid img:hover {
-            transform: translateY(-8px) scale(1.03) rotate(1deg);
-            box-shadow: 0 12px 25px rgba(229, 124, 168, 0.2);
+            transform:
+                translateY(-8px)
+                scale(1.03)
+                rotate(1deg);
+
+            box-shadow:
+                0 12px 25px
+                rgba(229, 124, 168, 0.2);
         }
 
-        /* =========================
+
+        /* =====================================================
            MOBILE
-        ========================= */
+        ===================================================== */
 
         @media (max-width: 600px) {
 
@@ -317,24 +510,73 @@
             }
 
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
+
                 gap: 15px;
             }
 
             .gallery-grid img {
                 height: 180px;
             }
+
+            /*
+            تصغير صور الزوايا على الجوال
+            */
+
+            .top-decoration,
+            .bottom-decoration {
+                width: 100px;
+                max-width: 22vw;
+            }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <!-- =========================
+
+    <!-- =====================================================
+         صورة الزاوية العلوية
+         
+         ضعي كود/رابط صورتك هنا
+         
+         مثال:
+         <img src="اسم-صورتك.png" ...>
+    ====================================================== -->
+
+    <img
+        src="YOUR TOP IMAGE HERE"
+        class="top-decoration"
+        alt=""
+    >
+
+
+    <!-- =====================================================
+         صورة الزاوية السفلية
+         
+         ضعي كود/رابط صورتك هنا
+         
+         مثال:
+         <img src="اسم-صورتك.png" ...>
+    ====================================================== -->
+
+    <img
+        src="YOUR BOTTOM IMAGE HERE"
+        class="bottom-decoration"
+        alt=""
+    >
+
+
+    <!-- =====================================================
          LOCK SCREEN
-    ========================= -->
+    ====================================================== -->
 
     <div id="lock-screen">
+
 
         <div class="title-area" id="title-section">
 
@@ -354,7 +596,9 @@
         <div class="dots-container">
 
             <div class="dot" id="dot1"></div>
+
             <div class="dot" id="dot2"></div>
+
             <div class="dot" id="dot3"></div>
 
         </div>
@@ -364,11 +608,20 @@
 
         <div class="popup-card" id="popup-screen">
 
-            <h2 class="popup-title" id="popup-text">
+            <h2
+                class="popup-title"
+                id="popup-text"
+            >
                 Wrong Code
             </h2>
 
-            <!-- استبدلي meecko.jpg بصورة ميكو -->
+
+            <!--
+                هنا ضعي صورة ميكو الخاصة بك
+
+                مثال:
+                <img src="meecko.png" ...>
+            -->
 
             <img
                 src="meecko.jpg"
@@ -376,6 +629,7 @@
                 id="micko-avatar"
                 alt="Meecko"
             >
+
 
             <button
                 class="popup-btn"
@@ -392,32 +646,104 @@
 
         <div class="keypad">
 
-            <div class="key" onclick="pressKey('1')">1</div>
-            <div class="key" onclick="pressKey('2')">2</div>
-            <div class="key" onclick="pressKey('3')">3</div>
+            <div
+                class="key"
+                onclick="pressKey('1')"
+            >
+                1
+            </div>
 
-            <div class="key" onclick="pressKey('4')">4</div>
-            <div class="key" onclick="pressKey('5')">5</div>
-            <div class="key" onclick="pressKey('6')">6</div>
+            <div
+                class="key"
+                onclick="pressKey('2')"
+            >
+                2
+            </div>
 
-            <div class="key" onclick="pressKey('7')">7</div>
-            <div class="key" onclick="pressKey('8')">8</div>
-            <div class="key" onclick="pressKey('9')">9</div>
+            <div
+                class="key"
+                onclick="pressKey('3')"
+            >
+                3
+            </div>
 
-            <div class="key special" onclick="pressKey('*')">*</div>
-            <div class="key" onclick="pressKey('0')">0</div>
-            <div class="key special" onclick="pressKey('#')">#</div>
+
+            <div
+                class="key"
+                onclick="pressKey('4')"
+            >
+                4
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('5')"
+            >
+                5
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('6')"
+            >
+                6
+            </div>
+
+
+            <div
+                class="key"
+                onclick="pressKey('7')"
+            >
+                7
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('8')"
+            >
+                8
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('9')"
+            >
+                9
+            </div>
+
+
+            <div
+                class="key special"
+                onclick="pressKey('*')"
+            >
+                *
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('0')"
+            >
+                0
+            </div>
+
+            <div
+                class="key special"
+                onclick="pressKey('#')"
+            >
+                #
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          BIRTHDAY CONTENT
-    ========================= -->
+    ====================================================== -->
 
     <div id="birthday-content">
+
 
         <div class="letter-card">
 
@@ -436,38 +762,65 @@
         </div>
 
 
-        <!-- =========================
+        <!-- =====================================================
              9 PHOTOS
-        ========================= -->
+        ====================================================== -->
 
         <div class="gallery-grid">
 
-            <img src="image1.jpg" alt="Our Memories">
+            <img
+                src="image1.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image2.jpg" alt="Our Memories">
+            <img
+                src="image2.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image3.jpg" alt="Our Memories">
+            <img
+                src="image3.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image4.jpg" alt="Our Memories">
+            <img
+                src="image4.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image5.jpg" alt="Our Memories">
+            <img
+                src="image5.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image6.jpg" alt="Our Memories">
+            <img
+                src="image6.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image7.jpg" alt="Our Memories">
+            <img
+                src="image7.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image8.jpg" alt="Our Memories">
+            <img
+                src="image8.jpg"
+                alt="Our Memories"
+            >
 
-            <img src="image9.jpg" alt="Our Memories">
+            <img
+                src="image9.jpg"
+                alt="Our Memories"
+            >
 
         </div>
 
     </div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================= -->
+    ====================================================== -->
 
     <script>
 
@@ -481,17 +834,15 @@
         function pressKey(key) {
 
             /*
-             * السماح بالأرقام فقط
-             * النجمة والهاشتاق موجودان بالشكل
-             * المطلوب لكنهما لا يدخلان في كلمة المرور.
-             */
+            النجمة والهاشتاق للزينة فقط.
+            كلمة المرور تستخدم الأرقام:
+            143
+            */
 
             if (!/^[0-9]$/.test(key)) {
                 return;
             }
 
-
-            /* لا نسمح بأكثر من 3 أرقام */
 
             if (enteredCode.length >= 3) {
                 return;
@@ -502,8 +853,6 @@
 
             updateDots();
 
-
-            /* التحقق بعد الرقم الثالث */
 
             if (enteredCode.length === 3) {
 
@@ -536,11 +885,13 @@
                     dot.classList.remove("active");
 
                 }
+
             }
+
         }
 
 
-        /* التحقق من الرمز */
+        /* التحقق من كلمة المرور */
 
         function checkCode() {
 
@@ -553,38 +904,50 @@
                 showWrongCode();
 
             }
+
         }
 
 
-        /* الرمز صحيح */
+        /* فتح صفحة عيد الميلاد */
 
         function openBirthdayPage() {
 
-            document.getElementById("lock-screen").style.display = "none";
+            document.getElementById(
+                "lock-screen"
+            ).style.display = "none";
 
-            document.getElementById("birthday-content").style.display = "block";
+
+            document.getElementById(
+                "birthday-content"
+            ).style.display = "block";
+
 
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
+
         }
 
 
-        /* الرمز خطأ */
+        /* إظهار رسالة الخطأ */
 
         function showWrongCode() {
 
-            const popup =
-                document.getElementById("popup-screen");
+            document.getElementById(
+                "popup-text"
+            ).innerText = "Wrong Code 💔";
 
-            document.getElementById("popup-text").innerText =
-                "Wrong Code 💔";
 
-            document.getElementById("popup-action-btn").innerText =
-                "Try Again";
+            document.getElementById(
+                "popup-action-btn"
+            ).innerText = "Try Again";
 
-            popup.style.display = "flex";
+
+            document.getElementById(
+                "popup-screen"
+            ).style.display = "flex";
+
         }
 
 
@@ -596,11 +959,15 @@
 
             updateDots();
 
-            document.getElementById("popup-screen").style.display =
-                "none";
+
+            document.getElementById(
+                "popup-screen"
+            ).style.display = "none";
+
         }
 
     </script>
 
 </body>
+
 </html>
