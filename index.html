@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مفاجأة يوم ميلاد رشا! 🎉</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeef8, #ffd3ec);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d81b60;
+        }
+
+        /* =========================
+           شاشة القفل
+        ========================= */
+
+        #lock-screen {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 360px;
+            width: 100%;
+            border: 2px dashed #ff80ab;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin: 0 0 8px;
+            color: #cc1155;
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: #777;
+            margin: 0 0 20px;
+            font-weight: normal;
+        }
+
+        /* مكان ظهور النجوم */
+
+        .pin-display {
+            width: 100%;
+            height: 50px;
+            background: #f9f9f9;
+            border: 2px solid #ffd3ec;
+            border-radius: 12px;
+            font-size: 1.8rem;
+            letter-spacing: 7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* =========================
+           لوحة الأرقام
+        ========================= */
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            justify-items: center;
+        }
+
+        .key {
+            width: 65px;
+            height: 65px;
+            background: #fff0f7;
+            border: 2px solid #ffb3de;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d81b60;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s;
+        }
+
+        .key:hover {
+            background: #ffe0f0;
+            transform: scale(1.05);
+        }
+
+        .key:active {
+            background: #ffb3de;
+            transform: scale(0.9);
+        }
+
+        .key.clear {
+            background: #ffe0e0;
+            border-color: #ff9999;
+            color: #cc0000;
+            font-size: 1rem;
+        }
+
+        /* =========================
+           رسالة الخطأ
+        ========================= */
+
+        .error-msg {
+            color: #cc0000;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            display: none;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        /* =========================
+           صفحة التهنئة
+        ========================= */
+
+        #content-screen {
+            display: none;
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           بطاقة التهنئة
+        ========================= */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+            border: 2px dashed #ff80ab;
+            margin-bottom: 30px;
+        }
+
+        .balloon {
+            font-size: 50px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .card h1 {
+            color: #d81b60;
+            margin: 15px 0;
+            font-size: 2rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 2;
+            margin: 0;
+        }
+
+        /* =========================
+           ألبوم الصور
+        ========================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            background: #fff0f7;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.04) rotate(1deg);
+        }
+
+        /* =========================
+           للجوال
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            #lock-screen {
+                padding: 25px 20px;
+            }
+
+            .key {
+                width: 60px;
+                height: 60px;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+
+            .card h1 {
+                font-size: 1.5rem;
+            }
+
+            .card p {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .gallery img {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         شاشة القفل
+    ========================= -->
+
+    <div id="lock-screen">
+
+        <h2>اضغطي تحت كلمة المرور 💗</h2>
+
+        <h3>
+            كلمة المرور هي I LOVE YOU بلغة الأرقام
+        </h3>
+
+        <div class="pin-display" id="display"></div>
+
+        <div class="keypad">
+
+            <div class="key" onclick="press(1)">1</div>
+            <div class="key" onclick="press(2)">2</div>
+            <div class="key" onclick="press(3)">3</div>
+
+            <div class="key" onclick="press(4)">4</div>
+            <div class="key" onclick="press(5)">5</div>
+            <div class="key" onclick="press(6)">6</div>
+
+            <div class="key" onclick="press(7)">7</div>
+            <div class="key" onclick="press(8)">8</div>
+            <div class="key" onclick="press(9)">9</div>
+
+            <div class="key clear" onclick="clearKey()">مسح</div>
+            <div class="key" onclick="press(0)">0</div>
+
+        </div>
+
+        <div class="error-msg" id="error">
+            الرمز السري خطأ! حاولي مرة أخرى 💔
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         صفحة عيد الميلاد
+    ========================= -->
+
+    <div id="content-screen">
+
+        <div class="card">
+
+            <div class="balloon">
+                🎈🎉🎁
+            </div>
+
+            <h1>
+                كل عام وأنتِ بخير يا رشا! ❤️
+            </h1>
+
+            <p>
+                اليوم هو يوم مميز لأنه يوم ميلادكِ الجميل.
+                أتمنى لكِ سنة مليئة بالفرح والنجاح والسعادة
+                التي تشبه قلبكِ الأبيض.
+                شكراً لأنكِ صديقتي الرائعة! ✨
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             ألبوم الصور
+             
+             استبدلي أسماء الصور بالصور
+             التي تريدينها
+        ========================= -->
+
+        <div class="gallery">
+
+            <img src="image1.jpg" alt="ذكرياتنا">
+
+            <img src="image2.jpg" alt="ذكرياتنا">
+
+            <img src="image3.jpg" alt="ذكرياتنا">
+
+            <img src="image4.jpg" alt="ذكرياتنا">
+
+            <img src="image5.jpg" alt="ذكرياتنا">
+
+            <img src="image6.jpg" alt="ذكرياتنا">
+
+            <img src="image7.jpg" alt="ذكرياتنا">
+
+            <img src="image8.jpg" alt="ذكرياتنا">
+
+            <img src="image9.jpg" alt="ذكرياتنا">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JavaScript
+    ========================= -->
+
+    <script>
+
+        let pin = "";
+
+        // 143 = I Love You
+        const correctPin = "143";
+
+
+        function press(num) {
+
+            // منع إدخال أكثر من 3 أرقام
+            if (pin.length < correctPin.length) {
+
+                pin += num;
+
+                // إظهار نجوم بدل الأرقام
+                document.getElementById("display").innerText =
+                    "*".repeat(pin.length);
+
+                // إخفاء رسالة الخطأ
+                document.getElementById("error").style.display = "none";
+
+
+                // التحقق تلقائياً بعد إدخال 3 أرقام
+                if (pin.length === correctPin.length) {
+
+                    checkPin();
+
+                }
+            }
+        }
+
+
+        function clearKey() {
+
+            pin = "";
+
+            document.getElementById("display").innerText = "";
+
+            document.getElementById("error").style.display = "none";
+
+        }
+
+
+        function checkPin() {
+
+            if (pin === correctPin) {
+
+                // إخفاء شاشة القفل
+                document.getElementById("lock-screen").style.display = "none";
+
+                // إظهار صفحة عيد الميلاد
+                document.getElementById("content-screen").style.display = "block";
+
+            } else {
+
+                // إظهار رسالة الخطأ
+                document.getElementById("error").style.display = "block";
+
+                // تصفير الرمز
+                pin = "";
+
+                document.getElementById("display").innerText = "";
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
