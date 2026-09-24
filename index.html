@@ -450,47 +450,75 @@
     }
 
 
-    /* =====================================================
-       NUMBER PAD
-    ===================================================== */
+/* =====================================================
+   NUMBER PAD — FIXED & ALWAYS VISIBLE
+===================================================== */
 
-    .number-pad {
-      width: min(100%, 310px);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 11px;
-    }
+.number-pad {
+  position: relative;
+  z-index: 50;
 
-    .number-btn {
-      width: 100%;
-      height: 58px;
-      border: 1px solid rgba(158, 96, 117, 0.28);
-      border-radius: 16px;
-      background: rgba(255, 245, 248, 0.72);
-      color: #765360;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(126, 75, 93, 0.07);
-      transition:
-        transform 0.15s ease,
-        background 0.15s ease,
-        box-shadow 0.15s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
+  width: 310px;
+  max-width: 90vw;
 
-    .number-btn:hover {
-      background: rgba(255, 248, 250, 0.95);
-      box-shadow: 0 6px 15px rgba(126, 75, 93, 0.10);
-    }
+  margin: 20px auto 0;
 
-    .number-btn:active {
-      transform: scale(0.94);
-      background: #f4ccd9;
-    }
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: repeat(4, 58px) !important;
 
+  gap: 10px;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.number-btn {
+  position: relative;
+  z-index: 51;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  height: 58px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: 1px solid rgba(158, 96, 117, 0.35) !important;
+  border-radius: 16px !important;
+
+  background: #fff1f5 !important;
+
+  color: #765360 !important;
+
+  font-family: "Cormorant Garamond", serif !important;
+  font-size: 29px !important;
+  font-weight: 600 !important;
+
+  line-height: 1 !important;
+
+  cursor: pointer;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  box-shadow: 0 4px 12px rgba(126, 75, 93, 0.10);
+
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.number-btn:hover {
+  background: #ffe5ed !important;
+}
+
+.number-btn:active {
+  transform: scale(0.94);
+  background: #f4ccd9 !important;
+}
 
     /* =====================================================
        ERROR MODAL
