@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -106,16 +102,11 @@
             border-radius: 20px;
             padding: 25px 20px;
             box-shadow: 0 10px 25px rgba(229, 124, 168, 0.2);
-
             display: none;
             flex-direction: column;
             align-items: center;
-
             z-index: 10;
-
-            animation: slideUp 0.4s
-                cubic-bezier(0.175, 0.885, 0.32, 1.275)
-                forwards;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .popup-card::after {
@@ -125,19 +116,9 @@
             left: 0;
             width: 100%;
             height: 10px;
-
             background-image:
-                linear-gradient(
-                    135deg,
-                    #ffd8eb 25%,
-                    transparent 25%
-                ),
-                linear-gradient(
-                    225deg,
-                    #ffd8eb 25%,
-                    transparent 25%
-                );
-
+                linear-gradient(135deg, #ffd8eb 25%, transparent 25%),
+                linear-gradient(225deg, #ffd8eb 25%, transparent 25%);
             background-size: 15px 30px;
         }
 
@@ -182,10 +163,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             cursor: pointer;
-
-            box-shadow:
-                0 4px 10px rgba(229, 124, 168, 0.3);
-
+            box-shadow: 0 4px 10px rgba(229, 124, 168, 0.3);
             transition: 0.2s;
         }
 
@@ -208,28 +186,18 @@
         .key {
             width: 70px;
             height: 70px;
-
             border: 1px solid #f2cadb;
             background-color: #fff;
             border-radius: 50%;
-
             font-family: 'Playfair Display', serif;
             font-size: 1.9rem;
             color: #444;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             cursor: pointer;
-
-            box-shadow:
-                0 4px 10px rgba(242, 202, 219, 0.4);
-
-            transition:
-                background-color 0.1s,
-                transform 0.1s;
-
+            box-shadow: 0 4px 10px rgba(242, 202, 219, 0.4);
+            transition: background-color 0.1s, transform 0.1s;
             user-select: none;
         }
 
@@ -253,19 +221,16 @@
             max-width: 800px;
             padding: 30px 20px;
             text-align: center;
-
             animation: fadeIn 1s ease forwards;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(15px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
@@ -274,23 +239,12 @@
         ========================= */
 
         .letter-card {
-            background: linear-gradient(
-                135deg,
-                #fff0f6,
-                #fff
-            );
-
+            background: linear-gradient(135deg, #fff0f6, #fff);
             padding: 40px 30px;
-
             border-radius: 24px;
-
-            box-shadow:
-                0 15px 35px rgba(229, 124, 168, 0.1);
-
+            box-shadow: 0 15px 35px rgba(229, 124, 168, 0.1);
             border: 1px dashed #e57ca8;
-
             margin-bottom: 40px;
-
             direction: rtl;
         }
 
@@ -312,39 +266,23 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
         .gallery-grid img {
             width: 100%;
             height: 240px;
-
             object-fit: cover;
-
             border-radius: 20px;
-
             border: 6px solid #fff;
-
-            box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.08);
-
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: 0.3s ease;
-
-            background-color: #fff0f6;
         }
 
         .gallery-grid img:hover {
-            transform:
-                translateY(-8px)
-                scale(1.03)
-                rotate(1deg);
-
-            box-shadow:
-                0 12px 25px
-                rgba(229, 124, 168, 0.2);
+            transform: translateY(-8px) scale(1.03) rotate(1deg);
+            box-shadow: 0 12px 25px rgba(229, 124, 168, 0.2);
         }
 
         /* =========================
@@ -353,16 +291,8 @@
 
         @media (max-width: 600px) {
 
-            #lock-screen {
-                max-width: 350px;
-            }
-
             .main-title {
-                font-size: 1.55rem;
-            }
-
-            .hint-text {
-                font-size: 0.85rem;
+                font-size: 1.6rem;
             }
 
             .keypad {
@@ -398,12 +328,11 @@
     </style>
 </head>
 
-
 <body>
 
-    <!-- ==================================================
-         1. LOCK SCREEN
-    ================================================== -->
+    <!-- =========================
+         LOCK SCREEN
+    ========================= -->
 
     <div id="lock-screen">
 
@@ -431,9 +360,7 @@
         </div>
 
 
-        <!-- ==================================================
-             POPUP
-        ================================================== -->
+        <!-- POPUP -->
 
         <div class="popup-card" id="popup-screen">
 
@@ -441,9 +368,7 @@
                 Wrong Code
             </h2>
 
-            <!--
-                استبدلي هذا الرابط بصورة ميكو التي تريدينها
-            -->
+            <!-- استبدلي meecko.jpg بصورة ميكو -->
 
             <img
                 src="meecko.jpg"
@@ -463,111 +388,36 @@
         </div>
 
 
-        <!-- ==================================================
-             KEYPAD
-        ================================================== -->
+        <!-- KEYPAD -->
 
         <div class="keypad">
 
-            <div
-                class="key"
-                onclick="pressKey('1')"
-            >
-                1
-            </div>
+            <div class="key" onclick="pressKey('1')">1</div>
+            <div class="key" onclick="pressKey('2')">2</div>
+            <div class="key" onclick="pressKey('3')">3</div>
 
-            <div
-                class="key"
-                onclick="pressKey('2')"
-            >
-                2
-            </div>
+            <div class="key" onclick="pressKey('4')">4</div>
+            <div class="key" onclick="pressKey('5')">5</div>
+            <div class="key" onclick="pressKey('6')">6</div>
 
-            <div
-                class="key"
-                onclick="pressKey('3')"
-            >
-                3
-            </div>
+            <div class="key" onclick="pressKey('7')">7</div>
+            <div class="key" onclick="pressKey('8')">8</div>
+            <div class="key" onclick="pressKey('9')">9</div>
 
-
-            <div
-                class="key"
-                onclick="pressKey('4')"
-            >
-                4
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('5')"
-            >
-                5
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('6')"
-            >
-                6
-            </div>
-
-
-            <div
-                class="key"
-                onclick="pressKey('7')"
-            >
-                7
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('8')"
-            >
-                8
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('9')"
-            >
-                9
-            </div>
-
-
-            <div
-                class="key special"
-                onclick="pressKey('*')"
-            >
-                *
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('0')"
-            >
-                0
-            </div>
-
-            <div
-                class="key special"
-                onclick="pressKey('#')"
-            >
-                #
-            </div>
+            <div class="key special" onclick="pressKey('*')">*</div>
+            <div class="key" onclick="pressKey('0')">0</div>
+            <div class="key special" onclick="pressKey('#')">#</div>
 
         </div>
 
     </div>
 
 
-    <!-- ==================================================
-         2. BIRTHDAY CONTENT
-    ================================================== -->
+    <!-- =========================
+         BIRTHDAY CONTENT
+    ========================= -->
 
     <div id="birthday-content">
-
-        <!-- LETTER -->
 
         <div class="letter-card">
 
@@ -586,92 +436,64 @@
         </div>
 
 
-        <!-- ==================================================
-             GALLERY - 9 PHOTOS
-        ================================================== -->
+        <!-- =========================
+             9 PHOTOS
+        ========================= -->
 
         <div class="gallery-grid">
 
-            <img
-                src="image1.jpg"
-                alt="Our Memories"
-            >
+            <img src="image1.jpg" alt="Our Memories">
 
-            <img
-                src="image2.jpg"
-                alt="Our Memories"
-            >
+            <img src="image2.jpg" alt="Our Memories">
 
-            <img
-                src="image3.jpg"
-                alt="Our Memories"
-            >
+            <img src="image3.jpg" alt="Our Memories">
 
-            <img
-                src="image4.jpg"
-                alt="Our Memories"
-            >
+            <img src="image4.jpg" alt="Our Memories">
 
-            <img
-                src="image5.jpg"
-                alt="Our Memories"
-            >
+            <img src="image5.jpg" alt="Our Memories">
 
-            <img
-                src="image6.jpg"
-                alt="Our Memories"
-            >
+            <img src="image6.jpg" alt="Our Memories">
 
-            <img
-                src="image7.jpg"
-                alt="Our Memories"
-            >
+            <img src="image7.jpg" alt="Our Memories">
 
-            <img
-                src="image8.jpg"
-                alt="Our Memories"
-            >
+            <img src="image8.jpg" alt="Our Memories">
 
-            <img
-                src="image9.jpg"
-                alt="Our Memories"
-            >
+            <img src="image9.jpg" alt="Our Memories">
 
         </div>
 
     </div>
 
 
-    <!-- ==================================================
+    <!-- =========================
          JAVASCRIPT
-    ================================================== -->
+    ========================= -->
 
     <script>
-
-        /*
-            كلمة المرور:
-            143 = I Love You
-        */
 
         const correctCode = "143";
 
         let enteredCode = "";
 
 
-        /*
-            الضغط على أحد الأرقام
-        */
+        /* الضغط على الأرقام */
 
         function pressKey(key) {
 
-            // إذا كان الرمز 3 أرقام، لا نضيف المزيد
-            if (enteredCode.length >= 3) {
+            /*
+             * السماح بالأرقام فقط
+             * النجمة والهاشتاق موجودان بالشكل
+             * المطلوب لكنهما لا يدخلان في كلمة المرور.
+             */
+
+            if (!/^[0-9]$/.test(key)) {
                 return;
             }
 
 
-            // الأرقام فقط
-            if (!/^[0-9]$/.test(key)) {
+            /* لا نسمح بأكثر من 3 أرقام */
+
+            if (enteredCode.length >= 3) {
                 return;
             }
 
@@ -681,7 +503,8 @@
             updateDots();
 
 
-            // عند إدخال 3 أرقام
+            /* التحقق بعد الرقم الثالث */
+
             if (enteredCode.length === 3) {
 
                 setTimeout(function () {
@@ -695,9 +518,7 @@
         }
 
 
-        /*
-            تحديث النقاط
-        */
+        /* تحديث المربعات */
 
         function updateDots() {
 
@@ -715,78 +536,59 @@
                     dot.classList.remove("active");
 
                 }
-
             }
-
         }
 
 
-        /*
-            التحقق من كلمة المرور
-        */
+        /* التحقق من الرمز */
 
         function checkCode() {
 
             if (enteredCode === correctCode) {
 
-                showBirthdayPage();
+                openBirthdayPage();
 
             } else {
 
                 showWrongCode();
 
             }
-
         }
 
 
-        /*
-            الرمز صحيح
-        */
+        /* الرمز صحيح */
 
-        function showBirthdayPage() {
+        function openBirthdayPage() {
 
-            document.getElementById("lock-screen")
-                .style.display = "none";
+            document.getElementById("lock-screen").style.display = "none";
 
-            document.getElementById("birthday-content")
-                .style.display = "block";
+            document.getElementById("birthday-content").style.display = "block";
 
-            document.body.style
-                .alignItems = "flex-start";
-
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         }
 
 
-        /*
-            الرمز خطأ
-        */
+        /* الرمز خطأ */
 
         function showWrongCode() {
 
             const popup =
                 document.getElementById("popup-screen");
 
-            const popupText =
-                document.getElementById("popup-text");
+            document.getElementById("popup-text").innerText =
+                "Wrong Code 💔";
 
-            const button =
-                document.getElementById("popup-action-btn");
-
-
-            popupText.innerText = "Wrong Code 💔";
-
-            button.innerText = "Try Again";
-
+            document.getElementById("popup-action-btn").innerText =
+                "Try Again";
 
             popup.style.display = "flex";
-
         }
 
 
-        /*
-            زر Try Again
-        */
+        /* Try Again */
 
         function handlePopupAction() {
 
@@ -794,13 +596,11 @@
 
             updateDots();
 
-            document.getElementById("popup-screen")
-                .style.display = "none";
-
+            document.getElementById("popup-screen").style.display =
+                "none";
         }
 
     </script>
 
 </body>
-
 </html>
