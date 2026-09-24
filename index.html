@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Birthday Surprise</title>
 
-    <!-- =========================
+    <!-- =====================================================
          ELEGANT FONTS
-         ========================= -->
+         English: Cormorant Garamond
+         Arabic: Amiri
+         ===================================================== -->
 
-    <!-- English: Cormorant Garamond
-         Arabic: Amiri -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
 
     <style>
 
-        /* ==================================================
-           BASIC SETTINGS
-           ================================================== */
+        /* =====================================================
+           BASIC
+           ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -35,465 +38,845 @@
             background: #fcecef;
             color: #54263b;
             font-family: 'Cormorant Garamond', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow-x: hidden;
         }
 
 
-        /* ==================================================
-           MAIN PAGE
-           ================================================== */
+        /* =====================================================
+           MAIN CONTAINER
+           ===================================================== */
 
         .page {
             position: relative;
-            width: min(92vw, 900px);
-            min-height: 92vh;
-            padding: 55px 35px;
+            width: 100%;
+            min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
+            padding: 50px 25px;
+
+            overflow: hidden;
         }
 
 
-        /* ==================================================
+        /* =====================================================
            DECORATIVE FRAME
-           ================================================== */
+           ===================================================== */
 
         .frame {
-            position: absolute;
+            position: fixed;
             inset: 18px;
-            border: 1px solid rgba(177, 100, 131, 0.45);
+
+            border: 1px solid rgba(177, 100, 131, 0.42);
+
             pointer-events: none;
+            z-index: 2;
         }
 
         .frame::before {
             content: "";
+
             position: absolute;
             inset: 7px;
-            border: 1px solid rgba(177, 100, 131, 0.22);
+
+            border: 1px solid rgba(177, 100, 131, 0.20);
         }
 
-        .frame-corner {
+
+        /* =====================================================
+           FRAME DECORATIONS
+           ===================================================== */
+
+        .frame-decoration {
             position: absolute;
-            width: 55px;
-            height: 55px;
-            color: #c98da7;
-            font-size: 28px;
-            line-height: 1;
+
+            color: #cf91aa;
+
+            font-family: Georgia, serif;
+
+            font-size: 25px;
         }
 
-        .corner-tl {
-            top: 8px;
-            left: 8px;
+        .top-left {
+            top: -7px;
+            left: -5px;
         }
 
-        .corner-tr {
-            top: 8px;
-            right: 8px;
+        .top-right {
+            top: -7px;
+            right: -5px;
             transform: scaleX(-1);
         }
 
-        .corner-bl {
-            bottom: 8px;
-            left: 8px;
+        .bottom-left {
+            bottom: -7px;
+            left: -5px;
             transform: scaleY(-1);
         }
 
-        .corner-br {
-            bottom: 8px;
-            right: 8px;
+        .bottom-right {
+            bottom: -7px;
+            right: -5px;
             transform: scale(-1);
         }
 
 
-        /* ==================================================
-           DECORATIVE SYMBOLS
-           These are NOT emojis.
-           ================================================== */
+        /* =====================================================
+           DECORATIVE SPARKLES
+           ===================================================== */
 
         .sparkle {
-            position: absolute;
-            color: #d49ab0;
+            position: fixed;
+
+            color: #d99ab1;
+
             font-family: Georgia, serif;
+
             pointer-events: none;
+
+            z-index: 3;
         }
 
-        .sparkle.one {
-            top: 70px;
-            left: 13%;
-            font-size: 18px;
-        }
-
-        .sparkle.two {
-            top: 145px;
-            right: 13%;
-            font-size: 25px;
-        }
-
-        .sparkle.three {
-            bottom: 110px;
+        .sparkle-1 {
+            top: 11%;
             left: 12%;
             font-size: 21px;
         }
 
-        .sparkle.four {
-            bottom: 175px;
-            right: 11%;
-            font-size: 16px;
+        .sparkle-2 {
+            top: 18%;
+            right: 13%;
+            font-size: 28px;
+        }
+
+        .sparkle-3 {
+            bottom: 17%;
+            left: 13%;
+            font-size: 17px;
+        }
+
+        .sparkle-4 {
+            bottom: 11%;
+            right: 14%;
+            font-size: 25px;
+        }
+
+        .sparkle-5 {
+            top: 38%;
+            left: 6%;
+            font-size: 14px;
+        }
+
+        .sparkle-6 {
+            top: 43%;
+            right: 6%;
+            font-size: 15px;
         }
 
 
-        /* ==================================================
-           TULIP DECORATIONS
-           ================================================== */
+        /* =====================================================
+           BOWS
+           ===================================================== */
 
-        .tulip {
-            position: absolute;
-            color: #d69ab0;
-            opacity: 0.75;
-            font-size: 30px;
+        .bow {
+            position: fixed;
+
+            color: #d486a4;
+
             font-family: Georgia, serif;
+
+            font-size: 36px;
+
+            opacity: 0.75;
+
+            pointer-events: none;
+
+            z-index: 3;
         }
 
-        .tulip.left {
+        .bow-left {
+            top: 8%;
             left: 5%;
-            bottom: 24%;
-            transform: rotate(-10deg);
         }
 
-        .tulip.right {
+        .bow-right {
+            bottom: 8%;
             right: 5%;
-            top: 25%;
-            transform: rotate(10deg);
         }
 
 
-        /* ==================================================
-           LOCK SCREEN
-           ================================================== */
+        /* =====================================================
+           SMALL FLOWER DECORATION
+           ===================================================== */
+
+        .flower {
+            position: fixed;
+
+            color: #d79bb0;
+
+            font-family: Georgia, serif;
+
+            font-size: 27px;
+
+            opacity: 0.65;
+
+            pointer-events: none;
+
+            z-index: 3;
+        }
+
+        .flower-left {
+            bottom: 28%;
+            left: 6%;
+        }
+
+        .flower-right {
+            top: 29%;
+            right: 6%;
+        }
+
+
+        /* =====================================================
+           PASSWORD SCREEN
+           ===================================================== */
 
         .lock-screen {
             width: 100%;
-            max-width: 520px;
+            max-width: 540px;
+
             text-align: center;
+
             position: relative;
+
             z-index: 5;
         }
 
 
-        /* ==================================================
+        /* =====================================================
            TITLE
-           ================================================== */
+           ===================================================== */
 
         .title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 6vw, 3.5rem);
+
+            font-size: clamp(2.4rem, 7vw, 3.8rem);
+
             font-weight: 600;
+
+            color: #57263d;
+
             letter-spacing: 1px;
-            color: #58263d;
-            margin-bottom: 8px;
-        }
 
-        .subtitle {
-            font-size: 1.25rem;
-            color: #a2637e;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
+            margin-bottom: 5px;
         }
 
 
-        /* Arabic text */
-
-        .arabic {
+        .arabic-title {
             font-family: 'Amiri', serif;
+
+            font-size: 1.45rem;
+
+            color: #9b6178;
+
+            margin-bottom: 25px;
         }
 
 
-        /* ==================================================
+        /* =====================================================
            PASSWORD DOTS
-           ================================================== */
+           ===================================================== */
 
         .password-dots {
             display: flex;
+
             justify-content: center;
+
             gap: 13px;
-            margin: 25px 0 15px;
+
+            margin: 20px 0 12px;
         }
 
         .dot {
             width: 13px;
             height: 13px;
+
             border-radius: 50%;
-            background: #e7a8bd;
+
+            background: #edbfd0;
+
             transition: 0.2s ease;
         }
 
         .dot.active {
-            background: #9d5473;
-            transform: scale(1.1);
+            background: #a85578;
+
+            transform: scale(1.12);
         }
 
 
-        /* ==================================================
+        /* =====================================================
            HINT
-           ================================================== */
+           ===================================================== */
 
         .hint {
+            font-size: 1.18rem;
+
+            color: #a0647c;
+
             margin-bottom: 30px;
-            color: #9a647a;
-            font-size: 1.15rem;
-            font-style: italic;
+
+            letter-spacing: 0.3px;
+        }
+
+        .hint strong {
+            color: #8d4563;
+
+            font-weight: 600;
         }
 
 
-        /* ==================================================
+        /* =====================================================
            KEYPAD
-           ================================================== */
+           ===================================================== */
 
         .keypad {
-            width: 270px;
-            margin: auto;
+            width: 275px;
+
+            margin: 0 auto;
+
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 13px;
         }
 
-        .key {
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            border: 1px solid rgba(160, 86, 115, 0.2);
-            background: rgba(255, 255, 255, 0.72);
 
-            color: #57263d;
+        .key {
+            width: 78px;
+            height: 78px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(160, 86, 115, 0.20);
+
+            background: rgba(255, 255, 255, 0.78);
+
+            color: #54263b;
 
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 2rem;
+
             font-weight: 600;
 
             cursor: pointer;
 
             display: flex;
+
             justify-content: center;
             align-items: center;
 
-            transition:
-                transform 0.18s ease,
-                background 0.18s ease,
-                box-shadow 0.18s ease;
+            transition: 0.2s ease;
+
+            box-shadow: 0 4px 12px rgba(100, 48, 70, 0.05);
         }
 
         .key:hover {
             transform: translateY(-3px);
-            background: #fff7fa;
-            box-shadow: 0 7px 18px rgba(132, 67, 95, 0.12);
+
+            background: #fff8fa;
+
+            box-shadow: 0 8px 20px rgba(100, 48, 70, 0.10);
         }
 
         .key:active {
-            transform: scale(0.93);
+            transform: scale(0.92);
         }
 
 
-        /* ==================================================
-           ERROR CARD
-           ================================================== */
+        /* =====================================================
+           ERROR POPUP
+           ===================================================== */
 
         .error-card {
             position: fixed;
+
             inset: 0;
 
-            background: rgba(73, 36, 53, 0.18);
+            background: rgba(73, 36, 53, 0.20);
+
             backdrop-filter: blur(5px);
 
             display: flex;
+
             justify-content: center;
             align-items: center;
 
             opacity: 0;
+
             visibility: hidden;
 
             transition: 0.3s ease;
 
-            z-index: 50;
+            z-index: 100;
         }
 
         .error-card.show {
             opacity: 1;
+
             visibility: visible;
         }
 
+
         .error-box {
-            width: min(85vw, 380px);
+            position: relative;
+
+            width: min(88vw, 390px);
+
             background: #fff9fb;
 
-            border: 1px solid #e4a8bb;
-            border-radius: 24px;
+            border: 1px solid #e3a7ba;
 
-            padding: 28px 25px 30px;
+            border-radius: 25px;
+
+            padding: 30px 25px;
 
             text-align: center;
-
-            position: relative;
 
             box-shadow:
                 0 20px 60px rgba(89, 38, 61, 0.18);
         }
 
 
-        /* Cute X */
+        /* =====================================================
+           ERROR X
+           ===================================================== */
 
-        .close-error {
+        .error-x {
             position: absolute;
-            top: 12px;
-            right: 15px;
 
-            width: 30px;
-            height: 30px;
+            top: 13px;
+            right: 14px;
 
-            border: none;
-            background: #f7d5df;
-
-            color: #a24e70;
+            width: 31px;
+            height: 31px;
 
             border-radius: 50%;
 
-            font-family: Arial, sans-serif;
-            font-size: 18px;
+            background: #f6cfdd;
 
-            cursor: pointer;
+            color: #ad5878;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 21px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
         }
 
 
-        /* ==================================================
+        /* =====================================================
            ERROR IMAGE
            
-           PUT YOUR IMAGE HERE:
-           Replace YOUR_ERROR_IMAGE.jpg
-           ================================================== */
+           >>> PUT YOUR IMAGE HERE <<<
+           
+           Replace:
+           YOUR_ERROR_IMAGE.png
+           
+           with your image name.
+           ===================================================== */
 
         .error-image {
-            width: 150px;
-            height: 150px;
-
-            margin: 5px auto 18px;
-
-            border-radius: 50%;
+            width: 145px;
+            height: 145px;
 
             object-fit: cover;
 
-            border: 5px solid #f8dce5;
-
-            background: #fcebef;
+            border-radius: 50%;
 
             display: block;
+
+            margin: 0 auto 17px;
+
+            background: #fce6ed;
+
+            border: 5px solid #f8dce5;
         }
 
 
         .error-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: #8d4563;
-            margin-bottom: 4px;
+
+            font-size: 2.2rem;
+
+            font-weight: 600;
+
+            color: #8e4563;
+
+            margin-bottom: 3px;
         }
+
 
         .error-text {
-            font-size: 1.15rem;
-            color: #a36b82;
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 1.25rem;
+
+            color: #a2667d;
+
+            line-height: 1.3;
+
+            margin-bottom: 20px;
         }
 
 
-        /* ==================================================
-           HIDDEN BIRTHDAY PAGE
-           ================================================== */
+        /* =====================================================
+           OK BUTTON
+           ===================================================== */
 
-        .birthday-page {
-            display: none;
-        }
+        .error-ok {
+            border: none;
 
+            background: #e4a0b7;
 
-        /* ==================================================
-           IMAGE PLACEHOLDER SECTION
-           
-           WHEN YOU ADD YOUR IMAGES:
-           
-           Replace:
-           YOUR_IMAGE_HERE.jpg
-           
-           with your actual image file name.
-           
-           Example:
-           <img src="rasha1.jpg">
-           ================================================== */
+            color: white;
 
-        .photo-placeholder {
-            width: 220px;
-            height: 220px;
-
-            object-fit: cover;
-
-            border-radius: 18px;
-
-            border: 1px solid #dca4b8;
-
-            background: #fff7fa;
-        }
-
-
-        /* ==================================================
-           THREE FRIENDS PHOTO
-           ================================================== */
-
-        .friends-photo {
-            width: 270px;
-            height: 190px;
-
-            object-fit: cover;
+            padding: 8px 30px;
 
             border-radius: 22px;
 
-            border: 2px solid #e1a8bb;
+            font-family: 'Cormorant Garamond', serif;
 
-            background: #fff7fa;
+            font-size: 1.2rem;
 
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .error-ok:hover {
+            background: #d785a1;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           ENVELOPE PAGE
+           ===================================================== */
+
+        .envelope-page {
+            display: none;
+
+            width: 100%;
+            max-width: 700px;
+
+            min-height: 80vh;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 5;
+
+            padding: 35px 20px;
+        }
+
+
+        /* =====================================================
+           ENVELOPE TITLE
+           ===================================================== */
+
+        .envelope-title {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(2.2rem, 6vw, 3.4rem);
+
+            font-weight: 600;
+
+            color: #58263d;
+
+            letter-spacing: 0.8px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .envelope-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 1.2rem;
+
+            color: #a36980;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =====================================================
+           ENVELOPE BUTTON
+           ===================================================== */
+
+        .envelope-button {
+            border: none;
+
+            background: transparent;
+
+            padding: 20px;
+
+            cursor: pointer;
+
+            transition: transform 0.25s ease;
+        }
+
+        .envelope-button:hover {
+            transform: translateY(-6px);
+        }
+
+        .envelope-button:active {
+            transform: scale(0.96);
+        }
+
+
+        /* =====================================================
+           BEIGE ENVELOPE
+           ===================================================== */
+
+        .envelope {
+            position: relative;
+
+            width: 320px;
+            height: 210px;
+
+            margin: auto;
+
+            background: #ead7b9;
+
+            border: 1px solid #d5ba91;
+
+            border-radius: 5px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 18px 35px rgba(93, 57, 52, 0.16);
+        }
+
+
+        /* Bottom fold */
+
+        .envelope::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+
+            border-bottom: 110px solid #e2c9a5;
+
+            z-index: 3;
+        }
+
+
+        /* Top fold */
+
+        .envelope::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+
+            border-top: 115px solid #f0dfc5;
+
+            z-index: 4;
+        }
+
+
+        /* =====================================================
+           LETTER INSIDE ENVELOPE
+           ===================================================== */
+
+        .letter {
+            position: absolute;
+
+            width: 195px;
+            height: 140px;
+
+            left: 62px;
+            top: 34px;
+
+            background: #fffaf1;
+
+            border: 1px solid #e6d6bd;
+
+            z-index: 2;
+
+            box-shadow:
+                0 4px 12px rgba(80, 50, 40, 0.08);
+        }
+
+
+        /* =====================================================
+           PINK WAX SEAL
+           ===================================================== */
+
+        .wax-seal {
+            position: absolute;
+
+            width: 57px;
+            height: 57px;
+
+            left: 50%;
+            top: 51%;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background: #d982a1;
+
+            border: 3px solid #c96e91;
+
+            color: #fff4f8;
+
+            font-family: Georgia, serif;
+
+            font-size: 25px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            z-index: 10;
+
+            box-shadow:
+                0 5px 10px rgba(130, 62, 84, 0.18);
+        }
+
+
+        /* =====================================================
+           GO BACK
+           ===================================================== */
+
+        .go-back {
             display: block;
-            margin: 20px auto;
+
+            margin: 30px auto 0;
+
+            border: none;
+
+            background: transparent;
+
+            color: #8f536d;
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 1.2rem;
+
+            cursor: pointer;
+
+            text-decoration: underline;
+
+            text-underline-offset: 5px;
+        }
+
+        .go-back:hover {
+            color: #c16d8e;
         }
 
 
-        /* ==================================================
-           HEART PHOTO FRAME
-           ================================================== */
+        /* =====================================================
+           ENVELOPE DECORATIONS
+           ===================================================== */
 
-        .heart-photo {
-            width: 220px;
-            height: 220px;
+        .envelope-sparkle {
+            position: absolute;
 
-            object-fit: cover;
+            color: #d598ae;
 
-            clip-path: path(
-                "M110 200
-                 C100 190 20 135 20 70
-                 C20 20 80 10 110 55
-                 C140 10 200 20 200 70
-                 C200 135 120 190 110 200 Z"
-            );
+            font-family: Georgia, serif;
 
-            background: #f9dbe5;
+            pointer-events: none;
+        }
+
+        .es-1 {
+            top: 9%;
+            left: 18%;
+            font-size: 24px;
+        }
+
+        .es-2 {
+            top: 22%;
+            right: 16%;
+            font-size: 18px;
+        }
+
+        .es-3 {
+            bottom: 18%;
+            left: 19%;
+            font-size: 20px;
+        }
+
+        .es-4 {
+            bottom: 10%;
+            right: 20%;
+            font-size: 27px;
         }
 
 
-        /* ==================================================
+        .envelope-bow {
+            position: absolute;
+
+            color: #d486a4;
+
+            font-family: Georgia, serif;
+
+            font-size: 36px;
+
+            opacity: 0.75;
+        }
+
+        .eb-left {
+            top: 8%;
+            left: 7%;
+        }
+
+        .eb-right {
+            bottom: 8%;
+            right: 7%;
+        }
+
+
+        /* =====================================================
            MOBILE
-           ================================================== */
+           ===================================================== */
 
         @media (max-width: 500px) {
 
             .page {
-                width: 100vw;
-                min-height: 100vh;
-                padding: 45px 20px;
+                padding: 45px 15px;
             }
 
             .frame {
@@ -510,343 +893,93 @@
                 height: 72px;
             }
 
-            .tulip.left {
+            .envelope {
+                width: 275px;
+                height: 182px;
+            }
+
+            .envelope::before {
+                border-left-width: 137px;
+                border-right-width: 137px;
+                border-bottom-width: 96px;
+            }
+
+            .envelope::after {
+                border-left-width: 137px;
+                border-right-width: 137px;
+                border-top-width: 100px;
+            }
+
+            .letter {
+                width: 165px;
+                height: 120px;
+
+                left: 54px;
+                top: 30px;
+            }
+
+            .wax-seal {
+                width: 50px;
+                height: 50px;
+            }
+
+            .bow-left {
                 left: 2%;
             }
 
-            .tulip.right {
+            .bow-right {
                 right: 2%;
             }
-
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- ==================================================
-         MAIN PAGE
-         ================================================== -->
+    <!-- =====================================================
+         PAGE
+         ===================================================== -->
 
     <main class="page">
 
 
-        <!-- Decorative frame -->
+        <!-- =================================================
+             DECORATIVE FRAME
+             ================================================= -->
 
         <div class="frame">
 
-            <div class="frame-corner corner-tl">✦</div>
-            <div class="frame-corner corner-tr">✦</div>
-            <div class="frame-corner corner-bl">✦</div>
-            <div class="frame-corner corner-br">✦</div>
+            <div class="frame-decoration top-left">✦</div>
+            <div class="frame-decoration top-right">✦</div>
+
+            <div class="frame-decoration bottom-left">✦</div>
+            <div class="frame-decoration bottom-right">✦</div>
 
         </div>
 
 
-        <!-- Decorative stars -->
-
-        <div class="sparkle one">✧</div>
-        <div class="sparkle two">✦</div>
-        <div class="sparkle three">✧</div>
-        <div class="sparkle four">⋆</div>
-
-
-        <!-- Tulip decorations -->
-
-        <div class="tulip left">❀</div>
-        <div class="tulip right">❀</div>
-
-
-        <!-- ==================================================
-             LOCK SCREEN
-             ================================================== -->
-
-        <section class="lock-screen" id="lockScreen">
-
-            <h1 class="title">
-                Enter the Password
-            </h1>
-
-
-            <p class="subtitle arabic">
-                أدخلي كلمة السر
-            </p>
-
-
-            <!-- Password dots -->
-
-            <div class="password-dots">
-
-                <span class="dot" id="dot1"></span>
-                <span class="dot" id="dot2"></span>
-                <span class="dot" id="dot3"></span>
-
-            </div>
-
-
-            <!-- Hint -->
-
-            <p class="hint">
-                A little hint from Miko: <strong>I love you</strong>
-            </p>
-
-
-            <!-- ==================================================
-                 KEYPAD
-                 ================================================== -->
-
-            <div class="keypad">
-
-                <button class="key" onclick="pressNumber('1')">1</button>
-                <button class="key" onclick="pressNumber('2')">2</button>
-                <button class="key" onclick="pressNumber('3')">3</button>
-
-                <button class="key" onclick="pressNumber('4')">4</button>
-                <button class="key" onclick="pressNumber('5')">5</button>
-                <button class="key" onclick="pressNumber('6')">6</button>
-
-                <button class="key" onclick="pressNumber('7')">7</button>
-                <button class="key" onclick="pressNumber('8')">8</button>
-                <button class="key" onclick="pressNumber('9')">9</button>
-
-                <button class="key" onclick="pressNumber('*')">*</button>
-                <button class="key" onclick="pressNumber('0')">0</button>
-                <button class="key" onclick="pressNumber('#')">#</button>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==================================================
-             BIRTHDAY PAGE
-             ================================================== -->
-
-        <section class="birthday-page" id="birthdayPage">
-
-            <h1 class="title">
-                Happy Birthday, Rasha
-            </h1>
-
-            <p class="subtitle">
-                Seventeen looks beautiful on you.
-            </p>
-
-
-            <!-- ==================================================
-                 THREE FRIENDS PHOTO
-
-                 PUT YOUR IMAGE HERE:
-
-                 Replace:
-                 YOUR_THREE_FRIENDS_IMAGE.jpg
-
-                 Example:
-                 <img src="friends.jpg">
-                 ================================================== -->
-
-            <img
-                class="friends-photo"
-                src="YOUR_THREE_FRIENDS_IMAGE.jpg"
-                alt="The three of us"
-            >
-
-
-            <!-- ==================================================
-                 HEART PHOTO
-
-                 PUT YOUR IMAGE HERE:
-
-                 Replace:
-                 YOUR_HEART_IMAGE.jpg
-                 ================================================== -->
-
-            <img
-                class="heart-photo"
-                src="YOUR_HEART_IMAGE.jpg"
-                alt="Birthday memory"
-            >
-
-
-            <!-- ==================================================
-                 MORE PHOTOS CAN GO HERE
-
-                 Copy this line whenever you want another image:
-
-                 <img class="photo-placeholder"
-                      src="YOUR_IMAGE_HERE.jpg"
-                      alt="">
-                 ================================================== -->
-
-
-        </section>
-
-
-    </main>
-
-
-    <!-- ==================================================
-         ERROR POPUP
-         ================================================== -->
-
-    <div class="error-card" id="errorCard">
-
-        <div class="error-box">
-
-
-            <!-- Close X -->
-
-            <button
-                class="close-error"
-                onclick="closeError()">
-                ×
-            </button>
-
-
-            <!-- ==================================================
-                 ERROR IMAGE
-
-                 PUT YOUR IMAGE HERE:
-
-                 Replace:
-                 YOUR_ERROR_IMAGE.jpg
-                 ================================================== -->
-
-            <img
-                class="error-image"
-                src="YOUR_ERROR_IMAGE.jpg"
-                alt="Miko"
-            >
-
-
-            <h2 class="error-title">
-                Wrong password
-            </h2>
-
-
-            <p class="error-text">
-                Try again, birthday girl ♡
-            </p>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ==================================================
-         JAVASCRIPT
-         ================================================== -->
-
-    <script>
-
-        /* ================================================
-           CORRECT PASSWORD
-           
-           143 = I LOVE YOU
-           ================================================ */
-
-        const correctPassword = "143";
-
-        let enteredPassword = "";
-
-
-        /* ================================================
-           PRESS NUMBER
-           ================================================ */
-
-        function pressNumber(number) {
-
-            /*
-                Only allow three numbers.
-            */
-
-            if (enteredPassword.length >= 3) {
-                return;
-            }
-
-
-            /*
-                Add pressed number.
-            */
-
-            enteredPassword += number;
-
-
-            /*
-                Update dots.
-            */
-
-            updateDots();
-
-
-            /*
-                Check password after three numbers.
-            */
-
-            if (enteredPassword.length === 3) {
-
-                setTimeout(checkPassword, 250);
-
-            }
-
-        }
-
-
-        /* ================================================
-           UPDATE PASSWORD DOTS
-           ================================================ */
-
-        function updateDots() {
-
-            const dots = [
-                document.getElementById("dot1"),
-                document.getElementById("dot2"),
-                document.getElementById("dot3")
-            ];
-
-
-            dots.forEach((dot, index) => {
-
-                if (index < enteredPassword.length) {
-
-                    dot.classList.add("active");
-
-                } else {
-
-                    dot.classList.remove("active");
-
-                }
-
-            });
-
-        }
-
-
-        /* ================================================
-           CHECK PASSWORD
-           ================================================ */
-
-        function checkPassword() {
-
-            if (enteredPassword === correctPassword) {
-
-                /*
-                    Correct password:
-                    Hide lock screen
-                    Show birthday page
-                */
-
-                document.getElementById("lockScreen").style.display = "none";
-
-                document.getElementById("birthdayPage").style.display = "block";
-
-            } else {
-
-                /*
-                    Wrong password:
-                    Show cut
+        <!-- =================================================
+             DECORATIONS
+             ================================================= -->
+
+        <div class="sparkle sparkle-1">✧</div>
+        <div class="sparkle sparkle-2">✦</div>
+        <div class="sparkle sparkle-3">⋆</div>
+        <div class="sparkle sparkle-4">✧</div>
+        <div class="sparkle sparkle-5">·</div>
+        <div class="sparkle sparkle-6">✦</div>
+
+        <div class="bow bow-left">୨୧</div>
+        <div class="bow bow-right">୨୧</div>
+
+        <div class="flower flower-left">❀</div>
+        <div class="flower flower-right">❀</div>
+
+
+        <!-- =====================================================
+             PASSWORD SCREEN
+        
