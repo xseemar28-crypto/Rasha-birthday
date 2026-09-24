@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفاجأة يوم ميلاد رشا! 🎉</title>
 
-    <title>Rasha's Birthday Surprise 🎈</title>
-
-    <!-- Google Fonts -->
+    <!-- الخطوط -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -25,20 +19,76 @@
 
         body {
             background-color: #ffffff;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             color: #333;
-            overflow-x: hidden;
+            overflow: hidden;
+            position: relative;
         }
 
+        /* 🌸 الزوايا الزخرفية */
+        .decor-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f2cadb;
+            border-radius: 4px;
+            pointer-events: none;
+        }
 
-        /* =====================================================
-           LOCK SCREEN
-        ===================================================== */
+        .top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
 
+        .top-right {
+            top: 20px;
+            right: 20px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* 🌸 صور زخرفية شفافة */
+        .top-decoration {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 150px;
+            max-width: 25vw;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bottom-decoration {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 150px;
+            max-width: 25vw;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* شاشة القفل */
         #lock-screen {
             display: flex;
             flex-direction: column;
@@ -48,102 +98,34 @@
             padding: 20px;
             text-align: center;
             position: relative;
+            z-index: 2;
         }
-
-
-        /* =====================================================
-           الصور الإضافية حول شاشة الرقم السري
-           
-           الصورة العلوية:
-           ضعي رابط صورتك أو كود الصورة مكان:
-           YOUR TOP IMAGE HERE
-        ===================================================== */
-
-        .top-decoration {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-
-            width: 150px;
-            max-width: 25vw;
-
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /*
-        مثال:
-
-        <img
-            src="YOUR IMAGE HERE"
-            class="top-decoration"
-            alt=""
-        >
-
-        */
-
-
-        /* =====================================================
-           الصورة السفلية
-           
-           ضعي رابط صورتك مكان:
-           YOUR BOTTOM IMAGE HERE
-        ===================================================== */
-
-        .bottom-decoration {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-
-            width: 150px;
-            max-width: 25vw;
-
-            z-index: 1;
-            pointer-events: none;
-        }
-
-
-        /* =====================================================
-           TITLE
-        ===================================================== */
 
         .title-area {
             margin-bottom: 25px;
             transition: opacity 0.3s;
-            position: relative;
-            z-index: 2;
         }
 
         .main-title {
-            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            letter-spacing: 2px;
-            color: #222;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4a152d;
+            font-weight: 500;
         }
 
         .hint-text {
-            font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
-            color: #666;
+            color: #888;
             margin-top: 5px;
-            font-style: italic;
         }
 
-
-        /* =====================================================
-           PASSCODE DOTS
-        ===================================================== */
-
+        /* النقاط */
         .dots-container {
             display: flex;
             gap: 15px;
             margin-bottom: 35px;
             height: 35px;
             align-items: center;
-
-            position: relative;
-            z-index: 2;
         }
 
         .dot {
@@ -151,9 +133,7 @@
             height: 35px;
             background-color: #f7d2e3;
             border-radius: 8px;
-            transition:
-                background-color 0.2s,
-                transform 0.2s;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
         .dot.active {
@@ -161,70 +141,36 @@
             transform: scale(1.1);
         }
 
-
-        /* =====================================================
-           POPUP
-        ===================================================== */
-
+        /* المربع المنبثق */
         .popup-card {
             position: absolute;
             top: 20px;
-
             width: calc(100% - 40px);
-
             background-color: #ffd8eb;
             border-radius: 20px;
-
             padding: 25px 20px;
-
-            box-shadow:
-                0 10px 25px
-                rgba(229, 124, 168, 0.2);
-
+            box-shadow: 0 10px 25px rgba(229, 124, 168, 0.2);
             display: none;
             flex-direction: column;
             align-items: center;
-
             z-index: 10;
-
-            animation:
-                slideUp 0.4s
-                cubic-bezier(
-                    0.175,
-                    0.885,
-                    0.32,
-                    1.275
-                )
-                forwards;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .popup-card::after {
             content: "";
-
             position: absolute;
             bottom: -10px;
             left: 0;
-
             width: 100%;
             height: 10px;
-
             background-image:
-                linear-gradient(
-                    135deg,
-                    #ffd8eb 25%,
-                    transparent 25%
-                ),
-                linear-gradient(
-                    225deg,
-                    #ffd8eb 25%,
-                    transparent 25%
-                );
-
+                linear-gradient(135deg, #ffd8eb 25%, transparent 25%),
+                linear-gradient(225deg, #ffd8eb 25%, transparent 25%);
             background-size: 15px 30px;
         }
 
         @keyframes slideUp {
-
             from {
                 transform: translateY(50px);
                 opacity: 0;
@@ -234,56 +180,34 @@
                 transform: translateY(0);
                 opacity: 1;
             }
-
         }
 
         .popup-title {
-            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            letter-spacing: 1px;
             color: #4a152d;
             margin-bottom: 15px;
-            text-transform: uppercase;
         }
 
         .micko-img {
             width: 110px;
             height: 110px;
-
             border-radius: 50%;
-
             background-color: #fff;
-
             padding: 5px;
-
             border: 2px solid #e57ca8;
-
             object-fit: contain;
-
             margin-bottom: 20px;
         }
 
         .popup-btn {
             background-color: #e57ca8;
-
             color: white;
-
             border: none;
-
             padding: 10px 25px;
-
             border-radius: 20px;
-
-            font-family: 'Poppins', sans-serif;
-
             font-size: 0.9rem;
-
             cursor: pointer;
-
-            box-shadow:
-                0 4px 10px
-                rgba(229, 124, 168, 0.3);
-
+            box-shadow: 0 4px 10px rgba(229, 124, 168, 0.3);
             transition: 0.2s;
         }
 
@@ -291,59 +215,30 @@
             transform: scale(0.95);
         }
 
-
-        /* =====================================================
-           KEYPAD
-        ===================================================== */
-
+        /* لوحة الأرقام */
         .keypad {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px 25px;
-
             width: 100%;
-
             max-width: 280px;
-
-            position: relative;
-            z-index: 2;
+            margin-bottom: 40px;
         }
 
         .key {
             width: 70px;
             height: 70px;
-
             border: 1px solid #f2cadb;
-
             background-color: #fff;
-
             border-radius: 50%;
-
-            font-family: 'Playfair Display', serif;
-
-            font-size: 1.9rem;
-
+            font-size: 1.7rem;
             color: #444;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
             cursor: pointer;
-
-            box-shadow:
-                0 4px 10px
-                rgba(242, 202, 219, 0.4);
-
-            transition:
-                background-color 0.1s,
-                transform 0.1s;
-
+            box-shadow: 0 4px 10px rgba(242, 202, 219, 0.4);
+            transition: background-color 0.1s, transform 0.1s;
             user-select: none;
         }
 
@@ -354,31 +249,58 @@
 
         .key.special {
             font-size: 1.4rem;
-            color: #888;
+            color: #ccc;
         }
 
+        /* صور الشخصيات الثلاثة */
+        .characters-footer {
+            display: flex;
+            justify-content: space-between;
+            width: 120%;
+            max-width: 340px;
+            margin-top: 10px;
+        }
 
-        /* =====================================================
-           BIRTHDAY PAGE
-        ===================================================== */
+        .char-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
 
+        .char-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px dashed #f2cadb;
+            background-color: #fff5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #e57ca8;
+            overflow: hidden;
+        }
+
+        .char-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* صفحة التهنئة */
         #birthday-content {
             display: none;
-
             width: 100%;
-
             max-width: 800px;
-
             padding: 30px 20px;
-
             text-align: center;
-
-            animation:
-                fadeIn 1s ease forwards;
+            animation: fadeIn 1s ease forwards;
+            overflow-y: auto;
+            max-height: 100vh;
         }
 
         @keyframes fadeIn {
-
             from {
                 opacity: 0;
             }
@@ -386,115 +308,72 @@
             to {
                 opacity: 1;
             }
-
         }
 
-
-        /* =====================================================
-           LETTER
-        ===================================================== */
-
         .letter-card {
-            background:
-                linear-gradient(
-                    135deg,
-                    #fff0f6,
-                    #fff
-                );
-
+            background: linear-gradient(135deg, #fff0f6, #fff);
             padding: 40px 30px;
-
             border-radius: 24px;
-
-            box-shadow:
-                0 15px 35px
-                rgba(229, 124, 168, 0.1);
-
-            border:
-                1px dashed #e57ca8;
-
+            box-shadow: 0 15px 35px rgba(229, 124, 168, 0.1);
+            border: 1px dashed #e57ca8;
             margin-bottom: 40px;
-
-            direction: rtl;
         }
 
         .letter-card h1 {
             color: #cc1155;
-
             font-size: 2.2rem;
-
             margin-bottom: 15px;
         }
 
         .letter-card p {
             color: #555;
-
             font-size: 1.15rem;
-
             line-height: 1.8;
         }
 
-
-        /* =====================================================
-           GALLERY
-        ===================================================== */
-
+        /* معرض الصور */
         .gallery-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
         .gallery-grid img {
             width: 100%;
-
             height: 240px;
-
             object-fit: cover;
-
             border-radius: 20px;
-
             border: 6px solid #fff;
-
-            box-shadow:
-                0 8px 20px
-                rgba(0, 0, 0, 0.08);
-
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: 0.3s ease;
         }
 
         .gallery-grid img:hover {
-            transform:
-                translateY(-8px)
-                scale(1.03)
-                rotate(1deg);
-
-            box-shadow:
-                0 12px 25px
-                rgba(229, 124, 168, 0.2);
+            transform: translateY(-5px);
         }
 
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 600px) {
-
-            .main-title {
-                font-size: 1.6rem;
+        /* 📱 للجوال */
+        @media (max-width: 500px) {
+            .top-decoration,
+            .bottom-decoration {
+                width: 110px;
             }
 
-            .keypad {
-                gap: 16px 18px;
+            .main-title {
+                font-size: 1.55rem;
             }
 
             .key {
-                width: 65px;
-                height: 65px;
+                width: 62px;
+                height: 62px;
+            }
+
+            .keypad {
+                gap: 15px 20px;
+            }
+
+            .characters-footer {
+                width: 110%;
             }
 
             .letter-card {
@@ -502,472 +381,249 @@
             }
 
             .letter-card h1 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
 
             .letter-card p {
                 font-size: 1rem;
             }
-
-            .gallery-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-                gap: 15px;
-            }
-
-            .gallery-grid img {
-                height: 180px;
-            }
-
-            /*
-            تصغير صور الزوايا على الجوال
-            */
-
-            .top-decoration,
-            .bottom-decoration {
-                width: 100px;
-                max-width: 22vw;
-            }
-
         }
-
     </style>
 </head>
 
-
 <body>
 
+    <!-- زوايا الصفحة -->
+    <div class="decor-corner top-left"></div>
+    <div class="decor-corner top-right"></div>
+    <div class="decor-corner bottom-left"></div>
+    <div class="decor-corner bottom-right"></div>
 
-    <!-- =====================================================
-         صورة الزاوية العلوية
-         
-         ضعي كود/رابط صورتك هنا
-         
-         مثال:
-         <img src="اسم-صورتك.png" ...>
-    ====================================================== -->
+    <!--
+        🌸 ضعي صورة PNG الشفافة هنا
+        فقط غيري النص داخل src إلى رابط/اسم الصورة
+    -->
+    <img src="YOUR TOP IMAGE HERE.png"
+         class="top-decoration"
+         alt="">
 
-    <img
-        src="YOUR TOP IMAGE HERE"
-        class="top-decoration"
-        alt=""
-    >
+    <img src="YOUR BOTTOM IMAGE HERE.png"
+         class="bottom-decoration"
+         alt="">
 
-
-    <!-- =====================================================
-         صورة الزاوية السفلية
-         
-         ضعي كود/رابط صورتك هنا
-         
-         مثال:
-         <img src="اسم-صورتك.png" ...>
-    ====================================================== -->
-
-    <img
-        src="YOUR BOTTOM IMAGE HERE"
-        class="bottom-decoration"
-        alt=""
-    >
-
-
-    <!-- =====================================================
-         LOCK SCREEN
-    ====================================================== -->
+    <!-- ========================= -->
+    <!-- شاشة القفل -->
+    <!-- ========================= -->
 
     <div id="lock-screen">
 
-
         <div class="title-area" id="title-section">
-
-            <h1 class="main-title">
-                Enter Passcode
-            </h1>
-
-            <p class="hint-text">
-                (hint from meecko: i love you)
-            </p>
-
+            <h1 class="main-title">أدخل رمز المرور</h1>
+            <p class="hint-text">(تلميح من ميكو: أحبك)</p>
         </div>
 
-
-        <!-- PASSCODE DOTS -->
-
+        <!-- النقاط -->
         <div class="dots-container">
-
             <div class="dot" id="dot1"></div>
-
             <div class="dot" id="dot2"></div>
-
             <div class="dot" id="dot3"></div>
-
         </div>
 
-
-        <!-- POPUP -->
-
+        <!-- المربع المنبثق -->
         <div class="popup-card" id="popup-screen">
 
-            <h2
-                class="popup-title"
-                id="popup-text"
-            >
-                Wrong Code
+            <h2 class="popup-title" id="popup-text">
+                الرمز خطأ 💔
             </h2>
 
+            <!-- ضعي صورة ميكو هنا -->
+            <img src="meecko.jpg"
+                 class="micko-img"
+                 id="micko-avatar"
+                 alt="Meecko">
 
-            <!--
-                هنا ضعي صورة ميكو الخاصة بك
-
-                مثال:
-                <img src="meecko.png" ...>
-            -->
-
-            <img
-                src="meecko.jpg"
-                class="micko-img"
-                id="micko-avatar"
-                alt="Meecko"
-            >
-
-
-            <button
-                class="popup-btn"
-                id="popup-action-btn"
-                onclick="handlePopupAction()"
-            >
-                Try Again
+            <button class="popup-btn"
+                    id="popup-action-btn"
+                    onclick="handlePopupAction()">
+                حاولي مجدداً
             </button>
 
         </div>
 
-
-        <!-- KEYPAD -->
-
+        <!-- لوحة الأرقام -->
         <div class="keypad">
 
-            <div
-                class="key"
-                onclick="pressKey('1')"
-            >
-                1
+            <div class="key" onclick="pressKey('1')">1</div>
+            <div class="key" onclick="pressKey('2')">2</div>
+            <div class="key" onclick="pressKey('3')">3</div>
+
+            <div class="key" onclick="pressKey('4')">4</div>
+            <div class="key" onclick="pressKey('5')">5</div>
+            <div class="key" onclick="pressKey('6')">6</div>
+
+            <div class="key" onclick="pressKey('7')">7</div>
+            <div class="key" onclick="pressKey('8')">8</div>
+            <div class="key" onclick="pressKey('9')">9</div>
+
+            <div class="key special">*</div>
+            <div class="key" onclick="pressKey('0')">0</div>
+            <div class="key special">#</div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- صور الشخصيات في الأسفل -->
+        <!-- ========================= -->
+
+        <div class="characters-footer">
+
+            <!-- ميكو -->
+            <div class="char-box">
+                <div class="char-circle">
+                    <img src="micko.png" alt="ميكو">
+                </div>
             </div>
 
-            <div
-                class="key"
-                onclick="pressKey('2')"
-            >
-                2
+            <!-- تيتو -->
+            <div class="char-box">
+                <div class="char-circle">
+                    <img src="teto.png" alt="تيتو">
+                </div>
             </div>
 
-            <div
-                class="key"
-                onclick="pressKey('3')"
-            >
-                3
-            </div>
-
-
-            <div
-                class="key"
-                onclick="pressKey('4')"
-            >
-                4
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('5')"
-            >
-                5
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('6')"
-            >
-                6
-            </div>
-
-
-            <div
-                class="key"
-                onclick="pressKey('7')"
-            >
-                7
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('8')"
-            >
-                8
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('9')"
-            >
-                9
-            </div>
-
-
-            <div
-                class="key special"
-                onclick="pressKey('*')"
-            >
-                *
-            </div>
-
-            <div
-                class="key"
-                onclick="pressKey('0')"
-            >
-                0
-            </div>
-
-            <div
-                class="key special"
-                onclick="pressKey('#')"
-            >
-                #
+            <!-- رين -->
+            <div class="char-box">
+                <div class="char-circle">
+                    <img src="rin.png" alt="رين">
+                </div>
             </div>
 
         </div>
 
     </div>
 
-
-    <!-- =====================================================
-         BIRTHDAY CONTENT
-    ====================================================== -->
+    <!-- ========================= -->
+    <!-- صفحة عيد الميلاد -->
+    <!-- ========================= -->
 
     <div id="birthday-content">
 
-
         <div class="letter-card">
 
-            <h1>
-                كل عام وأنتِ بألف خير يا رشا! ❤️🎉
-            </h1>
+            <h1>كل عام وأنتِ بألف خير يا رشا! ❤️🎉</h1>
 
             <p>
                 اليوم هو اليوم الأكثر جمالاً وتميزاً لأنه يوم ميلادكِ اللطيف.
-                أتمنى لكِ سنة جديدة مليئة بالسعادة، الضحكات،
-                وتحقيق كل الأمنيات التي يسعد بها قلبكِ الأبيض الجميل.
+                أتمنى لكِ سنة جديدة مليئة بالسعادة، الضحكات، وتحقيق كل الأمنيات
+                التي يسعد بها قلبكِ الأبيض الجميل.
                 شكراً لكل لحظة وذكرى تصنعينها معي،
                 وشكراً لكونكِ صديقتي المفضلة دائماً وأبداً! ✨🍰
             </p>
 
         </div>
 
-
-        <!-- =====================================================
-             9 PHOTOS
-        ====================================================== -->
+        <!-- ========================= -->
+        <!-- معرض الصور -->
+        <!-- ========================= -->
 
         <div class="gallery-grid">
 
-            <img
-                src="image1.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image2.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image3.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image4.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image5.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image6.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image7.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image8.jpg"
-                alt="Our Memories"
-            >
-
-            <img
-                src="image9.jpg"
-                alt="Our Memories"
-            >
+            <img src="image1.jpg" alt="صورة 1">
+            <img src="image2.jpg" alt="صورة 2">
+            <img src="image3.jpg" alt="صورة 3">
+            <img src="image4.jpg" alt="صورة 4">
+            <img src="image5.jpg" alt="صورة 5">
+            <img src="image6.jpg" alt="صورة 6">
+            <img src="image7.jpg" alt="صورة 7">
+            <img src="image8.jpg" alt="صورة 8">
+            <img src="image9.jpg" alt="صورة 9">
 
         </div>
 
     </div>
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
 
     <script>
 
-        const correctCode = "143";
-
         let enteredCode = "";
 
+        const correctCode = "143";
 
-        /* الضغط على الأرقام */
+        const popupScreen = document.getElementById("popup-screen");
+        const popupText = document.getElementById("popup-text");
+        const popupButton = document.getElementById("popup-action-btn");
 
-        function pressKey(key) {
-
-            /*
-            النجمة والهاشتاق للزينة فقط.
-            كلمة المرور تستخدم الأرقام:
-            143
-            */
-
-            if (!/^[0-9]$/.test(key)) {
-                return;
-            }
-
+        function pressKey(number) {
 
             if (enteredCode.length >= 3) {
                 return;
             }
 
-
-            enteredCode += key;
+            enteredCode += number;
 
             updateDots();
 
-
             if (enteredCode.length === 3) {
-
-                setTimeout(function () {
-
-                    checkCode();
-
-                }, 250);
-
+                setTimeout(checkCode, 300);
             }
-
         }
-
-
-        /* تحديث المربعات */
 
         function updateDots() {
 
             for (let i = 1; i <= 3; i++) {
 
-                const dot =
-                    document.getElementById("dot" + i);
+                const dot = document.getElementById("dot" + i);
 
                 if (i <= enteredCode.length) {
-
                     dot.classList.add("active");
-
                 } else {
-
                     dot.classList.remove("active");
-
                 }
-
             }
-
         }
-
-
-        /* التحقق من كلمة المرور */
 
         function checkCode() {
 
             if (enteredCode === correctCode) {
 
-                openBirthdayPage();
+                popupText.textContent = "صحيح! 💗";
+                popupButton.textContent = "افتحي المفاجأة ✨";
+
+                popupScreen.style.display = "flex";
 
             } else {
 
-                showWrongCode();
+                popupText.textContent = "الرمز خطأ 💔";
+                popupButton.textContent = "حاولي مجدداً";
 
+                popupScreen.style.display = "flex";
             }
-
         }
-
-
-        /* فتح صفحة عيد الميلاد */
-
-        function openBirthdayPage() {
-
-            document.getElementById(
-                "lock-screen"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "birthday-content"
-            ).style.display = "block";
-
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-
-
-        /* إظهار رسالة الخطأ */
-
-        function showWrongCode() {
-
-            document.getElementById(
-                "popup-text"
-            ).innerText = "Wrong Code 💔";
-
-
-            document.getElementById(
-                "popup-action-btn"
-            ).innerText = "Try Again";
-
-
-            document.getElementById(
-                "popup-screen"
-            ).style.display = "flex";
-
-        }
-
-
-        /* Try Again */
 
         function handlePopupAction() {
 
-            enteredCode = "";
+            if (enteredCode === correctCode) {
 
-            updateDots();
+                document.getElementById("lock-screen").style.display = "none";
 
+                document.getElementById("birthday-content").style.display = "block";
 
-            document.getElementById(
-                "popup-screen"
-            ).style.display = "none";
+                document.body.style.overflow = "auto";
 
+            } else {
+
+                enteredCode = "";
+
+                updateDots();
+
+                popupScreen.style.display = "none";
+            }
         }
 
     </script>
 
 </body>
-
 </html>
