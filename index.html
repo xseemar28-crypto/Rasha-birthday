@@ -1,158 +1,260 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>مفاجأة يوم ميلاد رشا! 🎉</title>
+    <title>Rasha's Birthday Surprise 🎈</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            background: linear-gradient(135deg, #ffeef8, #ffd3ec);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
+            background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #d81b60;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
         }
 
         /* =========================
-           شاشة القفل
+           LOCK SCREEN
         ========================= */
 
         #lock-screen {
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 360px;
-            width: 100%;
-            border: 2px dashed #ff80ab;
-        }
-
-        h2 {
-            font-size: 1.3rem;
-            margin: 0 0 8px;
-            color: #cc1155;
-        }
-
-        h3 {
-            font-size: 1rem;
-            color: #777;
-            margin: 0 0 20px;
-            font-weight: normal;
-        }
-
-        /* مكان ظهور النجوم */
-
-        .pin-display {
-            width: 100%;
-            height: 50px;
-            background: #f9f9f9;
-            border: 2px solid #ffd3ec;
-            border-radius: 12px;
-            font-size: 1.8rem;
-            letter-spacing: 7px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
-            color: #333;
+            width: 100%;
+            max-width: 380px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .title-area {
+            margin-bottom: 25px;
+            transition: opacity 0.3s;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #222;
+            text-transform: uppercase;
+        }
+
+        .hint-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
         }
 
         /* =========================
-           لوحة الأرقام
+           PASSCODE DOTS
+        ========================= */
+
+        .dots-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 35px;
+            height: 35px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 35px;
+            height: 35px;
+            background-color: #f7d2e3;
+            border-radius: 8px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .dot.active {
+            background-color: #e57ca8;
+            transform: scale(1.1);
+        }
+
+        /* =========================
+           POPUP
+        ========================= */
+
+        .popup-card {
+            position: absolute;
+            top: 20px;
+            width: calc(100% - 40px);
+            background-color: #ffd8eb;
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 25px rgba(229, 124, 168, 0.2);
+
+            display: none;
+            flex-direction: column;
+            align-items: center;
+
+            z-index: 10;
+
+            animation: slideUp 0.4s
+                cubic-bezier(0.175, 0.885, 0.32, 1.275)
+                forwards;
+        }
+
+        .popup-card::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+
+            background-image:
+                linear-gradient(
+                    135deg,
+                    #ffd8eb 25%,
+                    transparent 25%
+                ),
+                linear-gradient(
+                    225deg,
+                    #ffd8eb 25%,
+                    transparent 25%
+                );
+
+            background-size: 15px 30px;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: #4a152d;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .micko-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #fff;
+            padding: 5px;
+            border: 2px solid #e57ca8;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .popup-btn {
+            background-color: #e57ca8;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 10px rgba(229, 124, 168, 0.3);
+
+            transition: 0.2s;
+        }
+
+        .popup-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* =========================
+           KEYPAD
         ========================= */
 
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            justify-items: center;
+            gap: 20px 25px;
+            width: 100%;
+            max-width: 280px;
         }
 
         .key {
-            width: 65px;
-            height: 65px;
-            background: #fff0f7;
-            border: 2px solid #ffb3de;
+            width: 70px;
+            height: 70px;
+
+            border: 1px solid #f2cadb;
+            background-color: #fff;
             border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d81b60;
+
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            color: #444;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
             cursor: pointer;
-            user-select: none;
-            transition: 0.2s;
-        }
 
-        .key:hover {
-            background: #ffe0f0;
-            transform: scale(1.05);
+            box-shadow:
+                0 4px 10px rgba(242, 202, 219, 0.4);
+
+            transition:
+                background-color 0.1s,
+                transform 0.1s;
+
+            user-select: none;
         }
 
         .key:active {
-            background: #ffb3de;
-            transform: scale(0.9);
+            background-color: #ffd8eb;
+            transform: scale(0.92);
         }
 
-        .key.clear {
-            background: #ffe0e0;
-            border-color: #ff9999;
-            color: #cc0000;
-            font-size: 1rem;
-        }
-
-        /* =========================
-           رسالة الخطأ
-        ========================= */
-
-        .error-msg {
-            color: #cc0000;
-            font-size: 0.9rem;
-            margin-top: 12px;
-            display: none;
-            animation: shake 0.3s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-5px);
-            }
-
-            75% {
-                transform: translateX(5px);
-            }
+        .key.special {
+            font-size: 1.4rem;
+            color: #888;
         }
 
         /* =========================
-           صفحة التهنئة
+           BIRTHDAY PAGE
         ========================= */
 
-        #content-screen {
+        #birthday-content {
             display: none;
-            max-width: 850px;
             width: 100%;
+            max-width: 800px;
+            padding: 30px 20px;
             text-align: center;
-            animation: fadeIn 1s ease-in-out;
+
+            animation: fadeIn 1s ease forwards;
         }
 
         @keyframes fadeIn {
@@ -168,112 +270,129 @@
         }
 
         /* =========================
-           بطاقة التهنئة
+           LETTER
         ========================= */
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
-            border: 2px dashed #ff80ab;
-            margin-bottom: 30px;
+        .letter-card {
+            background: linear-gradient(
+                135deg,
+                #fff0f6,
+                #fff
+            );
+
+            padding: 40px 30px;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 15px 35px rgba(229, 124, 168, 0.1);
+
+            border: 1px dashed #e57ca8;
+
+            margin-bottom: 40px;
+
+            direction: rtl;
         }
 
-        .balloon {
-            font-size: 50px;
-            animation: float 3s ease-in-out infinite;
+        .letter-card h1 {
+            color: #cc1155;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
         }
 
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        .card h1 {
-            color: #d81b60;
-            margin: 15px 0;
-            font-size: 2rem;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 1.05rem;
-            line-height: 2;
-            margin: 0;
+        .letter-card p {
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
         }
 
         /* =========================
-           ألبوم الصور
+           GALLERY
         ========================= */
 
-        .gallery {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 25px;
         }
 
-        .gallery img {
+        .gallery-grid img {
             width: 100%;
-            height: 220px;
+            height: 240px;
+
             object-fit: cover;
-            border-radius: 18px;
-            border: 4px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-            background: #fff0f7;
+
+            border-radius: 20px;
+
+            border: 6px solid #fff;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s ease;
+
+            background-color: #fff0f6;
         }
 
-        .gallery img:hover {
-            transform: scale(1.04) rotate(1deg);
+        .gallery-grid img:hover {
+            transform:
+                translateY(-8px)
+                scale(1.03)
+                rotate(1deg);
+
+            box-shadow:
+                0 12px 25px
+                rgba(229, 124, 168, 0.2);
         }
 
         /* =========================
-           للجوال
+           MOBILE
         ========================= */
 
         @media (max-width: 600px) {
 
-            body {
-                padding: 15px;
+            #lock-screen {
+                max-width: 350px;
             }
 
-            #lock-screen {
-                padding: 25px 20px;
+            .main-title {
+                font-size: 1.55rem;
+            }
+
+            .hint-text {
+                font-size: 0.85rem;
+            }
+
+            .keypad {
+                gap: 16px 18px;
             }
 
             .key {
-                width: 60px;
-                height: 60px;
+                width: 65px;
+                height: 65px;
             }
 
-            .card {
-                padding: 22px 18px;
+            .letter-card {
+                padding: 30px 20px;
             }
 
-            .card h1 {
-                font-size: 1.5rem;
+            .letter-card h1 {
+                font-size: 1.7rem;
             }
 
-            .card p {
-                font-size: 0.95rem;
-                line-height: 1.8;
+            .letter-card p {
+                font-size: 1rem;
             }
 
-            .gallery {
+            .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 15px;
             }
 
-            .gallery img {
-                height: 160px;
+            .gallery-grid img {
+                height: 180px;
             }
         }
     </style>
@@ -282,173 +401,402 @@
 
 <body>
 
-    <!-- =========================
-         شاشة القفل
-    ========================= -->
+    <!-- ==================================================
+         1. LOCK SCREEN
+    ================================================== -->
 
     <div id="lock-screen">
 
-        <h2>اضغطي تحت كلمة المرور 💗</h2>
+        <div class="title-area" id="title-section">
 
-        <h3>
-            كلمة المرور هي I LOVE YOU بلغة الأرقام
-        </h3>
-
-        <div class="pin-display" id="display"></div>
-
-        <div class="keypad">
-
-            <div class="key" onclick="press(1)">1</div>
-            <div class="key" onclick="press(2)">2</div>
-            <div class="key" onclick="press(3)">3</div>
-
-            <div class="key" onclick="press(4)">4</div>
-            <div class="key" onclick="press(5)">5</div>
-            <div class="key" onclick="press(6)">6</div>
-
-            <div class="key" onclick="press(7)">7</div>
-            <div class="key" onclick="press(8)">8</div>
-            <div class="key" onclick="press(9)">9</div>
-
-            <div class="key clear" onclick="clearKey()">مسح</div>
-            <div class="key" onclick="press(0)">0</div>
-
-        </div>
-
-        <div class="error-msg" id="error">
-            الرمز السري خطأ! حاولي مرة أخرى 💔
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         صفحة عيد الميلاد
-    ========================= -->
-
-    <div id="content-screen">
-
-        <div class="card">
-
-            <div class="balloon">
-                🎈🎉🎁
-            </div>
-
-            <h1>
-                كل عام وأنتِ بخير يا رشا! ❤️
+            <h1 class="main-title">
+                Enter Passcode
             </h1>
 
-            <p>
-                اليوم هو يوم مميز لأنه يوم ميلادكِ الجميل.
-                أتمنى لكِ سنة مليئة بالفرح والنجاح والسعادة
-                التي تشبه قلبكِ الأبيض.
-                شكراً لأنكِ صديقتي الرائعة! ✨
+            <p class="hint-text">
+                (hint from meecko: i love you)
             </p>
 
         </div>
 
 
-        <!-- =========================
-             ألبوم الصور
-             
-             استبدلي أسماء الصور بالصور
-             التي تريدينها
-        ========================= -->
+        <!-- PASSCODE DOTS -->
 
-        <div class="gallery">
+        <div class="dots-container">
 
-            <img src="image1.jpg" alt="ذكرياتنا">
+            <div class="dot" id="dot1"></div>
+            <div class="dot" id="dot2"></div>
+            <div class="dot" id="dot3"></div>
 
-            <img src="image2.jpg" alt="ذكرياتنا">
+        </div>
 
-            <img src="image3.jpg" alt="ذكرياتنا">
 
-            <img src="image4.jpg" alt="ذكرياتنا">
+        <!-- ==================================================
+             POPUP
+        ================================================== -->
 
-            <img src="image5.jpg" alt="ذكرياتنا">
+        <div class="popup-card" id="popup-screen">
 
-            <img src="image6.jpg" alt="ذكرياتنا">
+            <h2 class="popup-title" id="popup-text">
+                Wrong Code
+            </h2>
 
-            <img src="image7.jpg" alt="ذكرياتنا">
+            <!--
+                استبدلي هذا الرابط بصورة ميكو التي تريدينها
+            -->
 
-            <img src="image8.jpg" alt="ذكرياتنا">
+            <img
+                src="meecko.jpg"
+                class="micko-img"
+                id="micko-avatar"
+                alt="Meecko"
+            >
 
-            <img src="image9.jpg" alt="ذكرياتنا">
+            <button
+                class="popup-btn"
+                id="popup-action-btn"
+                onclick="handlePopupAction()"
+            >
+                Try Again
+            </button>
+
+        </div>
+
+
+        <!-- ==================================================
+             KEYPAD
+        ================================================== -->
+
+        <div class="keypad">
+
+            <div
+                class="key"
+                onclick="pressKey('1')"
+            >
+                1
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('2')"
+            >
+                2
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('3')"
+            >
+                3
+            </div>
+
+
+            <div
+                class="key"
+                onclick="pressKey('4')"
+            >
+                4
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('5')"
+            >
+                5
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('6')"
+            >
+                6
+            </div>
+
+
+            <div
+                class="key"
+                onclick="pressKey('7')"
+            >
+                7
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('8')"
+            >
+                8
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('9')"
+            >
+                9
+            </div>
+
+
+            <div
+                class="key special"
+                onclick="pressKey('*')"
+            >
+                *
+            </div>
+
+            <div
+                class="key"
+                onclick="pressKey('0')"
+            >
+                0
+            </div>
+
+            <div
+                class="key special"
+                onclick="pressKey('#')"
+            >
+                #
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- =========================
-         JavaScript
-    ========================= -->
+    <!-- ==================================================
+         2. BIRTHDAY CONTENT
+    ================================================== -->
+
+    <div id="birthday-content">
+
+        <!-- LETTER -->
+
+        <div class="letter-card">
+
+            <h1>
+                كل عام وأنتِ بألف خير يا رشا! ❤️🎉
+            </h1>
+
+            <p>
+                اليوم هو اليوم الأكثر جمالاً وتميزاً لأنه يوم ميلادكِ اللطيف.
+                أتمنى لكِ سنة جديدة مليئة بالسعادة، الضحكات،
+                وتحقيق كل الأمنيات التي يسعد بها قلبكِ الأبيض الجميل.
+                شكراً لكل لحظة وذكرى تصنعينها معي،
+                وشكراً لكونكِ صديقتي المفضلة دائماً وأبداً! ✨🍰
+            </p>
+
+        </div>
+
+
+        <!-- ==================================================
+             GALLERY - 9 PHOTOS
+        ================================================== -->
+
+        <div class="gallery-grid">
+
+            <img
+                src="image1.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image2.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image3.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image4.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image5.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image6.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image7.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image8.jpg"
+                alt="Our Memories"
+            >
+
+            <img
+                src="image9.jpg"
+                alt="Our Memories"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
 
     <script>
 
-        let pin = "";
+        /*
+            كلمة المرور:
+            143 = I Love You
+        */
 
-        // 143 = I Love You
-        const correctPin = "143";
+        const correctCode = "143";
 
-
-        function press(num) {
-
-            // منع إدخال أكثر من 3 أرقام
-            if (pin.length < correctPin.length) {
-
-                pin += num;
-
-                // إظهار نجوم بدل الأرقام
-                document.getElementById("display").innerText =
-                    "*".repeat(pin.length);
-
-                // إخفاء رسالة الخطأ
-                document.getElementById("error").style.display = "none";
+        let enteredCode = "";
 
 
-                // التحقق تلقائياً بعد إدخال 3 أرقام
-                if (pin.length === correctPin.length) {
+        /*
+            الضغط على أحد الأرقام
+        */
 
-                    checkPin();
+        function pressKey(key) {
+
+            // إذا كان الرمز 3 أرقام، لا نضيف المزيد
+            if (enteredCode.length >= 3) {
+                return;
+            }
+
+
+            // الأرقام فقط
+            if (!/^[0-9]$/.test(key)) {
+                return;
+            }
+
+
+            enteredCode += key;
+
+            updateDots();
+
+
+            // عند إدخال 3 أرقام
+            if (enteredCode.length === 3) {
+
+                setTimeout(function () {
+
+                    checkCode();
+
+                }, 250);
+
+            }
+
+        }
+
+
+        /*
+            تحديث النقاط
+        */
+
+        function updateDots() {
+
+            for (let i = 1; i <= 3; i++) {
+
+                const dot =
+                    document.getElementById("dot" + i);
+
+                if (i <= enteredCode.length) {
+
+                    dot.classList.add("active");
+
+                } else {
+
+                    dot.classList.remove("active");
 
                 }
+
             }
-        }
-
-
-        function clearKey() {
-
-            pin = "";
-
-            document.getElementById("display").innerText = "";
-
-            document.getElementById("error").style.display = "none";
 
         }
 
 
-        function checkPin() {
+        /*
+            التحقق من كلمة المرور
+        */
 
-            if (pin === correctPin) {
+        function checkCode() {
 
-                // إخفاء شاشة القفل
-                document.getElementById("lock-screen").style.display = "none";
+            if (enteredCode === correctCode) {
 
-                // إظهار صفحة عيد الميلاد
-                document.getElementById("content-screen").style.display = "block";
+                showBirthdayPage();
 
             } else {
 
-                // إظهار رسالة الخطأ
-                document.getElementById("error").style.display = "block";
-
-                // تصفير الرمز
-                pin = "";
-
-                document.getElementById("display").innerText = "";
+                showWrongCode();
 
             }
+
+        }
+
+
+        /*
+            الرمز صحيح
+        */
+
+        function showBirthdayPage() {
+
+            document.getElementById("lock-screen")
+                .style.display = "none";
+
+            document.getElementById("birthday-content")
+                .style.display = "block";
+
+            document.body.style
+                .alignItems = "flex-start";
+
+        }
+
+
+        /*
+            الرمز خطأ
+        */
+
+        function showWrongCode() {
+
+            const popup =
+                document.getElementById("popup-screen");
+
+            const popupText =
+                document.getElementById("popup-text");
+
+            const button =
+                document.getElementById("popup-action-btn");
+
+
+            popupText.innerText = "Wrong Code 💔";
+
+            button.innerText = "Try Again";
+
+
+            popup.style.display = "flex";
+
+        }
+
+
+        /*
+            زر Try Again
+        */
+
+        function handlePopupAction() {
+
+            enteredCode = "";
+
+            updateDots();
+
+            document.getElementById("popup-screen")
+                .style.display = "none";
+
         }
 
     </script>
